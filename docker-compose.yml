@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  ansible-target:
+    build:
+      context: .  # Dockerfileがある場所
+    container_name: ansible-target
+    privileged: true
+    ports:
+      - "2222:22"  # ローカルポート2222をコンテナの22番ポートにマッピング
+    command: sh -c "service ssh start && sleep infinity"
+    volumes:
+      - ./ssh:/root/.ssh  # SSHキーをコンテナにマウント
+    networks:
+      - ansible-network
+    environment:
+      - DEBIAN_FRONTEND=noninteractive
+    tty: true
+
+networks:
+  ansible-network:
+    driver: bridge

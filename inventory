@@ -1,0 +1,2 @@
+[docker]
+localhost ansible_user=root ansible_ssh_private_key_file=./ssh/ansible_key ansible_port=2222
