@@ -1,4 +1,5 @@
-- hosts: docker
+- name: Install curl
+  hosts: all
   tasks:
     - name: Ping the target
       ping:
